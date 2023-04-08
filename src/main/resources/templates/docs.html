@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout.html :: head">
+    <meta charset="UTF-8">
+    <title>HassWare | Documentación</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+<header th:replace="layout.html :: header"></header>
+
+<div class="container">
+    <section class="py-4 py-xl-5">
+
+        <!--Link to project documentation-->
+        <div class="container">
+            <div class="bg-light border rounded d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5"
+                 style="background-color: #f8f9fa; border: thin solid black">
+                <div class="text-center text-lg-left py-3 py-lg-1">
+                    <h2>Documentación del proyecto</h2>
+                    <p style="width: 617.5px;">En el siguiente enlace podrás encontrar todos los archivos generados en
+                        el análisis&nbsp; &nbsp; &nbsp; &nbsp; y diseño del sistema de información.</p>
+                </div>
+                <form class="d-flex justify-content-center flex-wrap">
+                    <div class="my-2"></div>
+                    <div class="my-2">
+                        <button class="btn btn-primary ml-2" style="background: #38C6EE; border-color: #38C6EE"><a
+                                href="https://drive.google.com/drive/folders/1O5yPb2vSVMJnIm3YZQGLn50N3oXOZ8iA"
+                                target="_blank" style="text-decoration: none; color: white">Ir a Documentación</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer th:replace="layout.html :: footer"></footer>
+
+</body>
+
+</html>

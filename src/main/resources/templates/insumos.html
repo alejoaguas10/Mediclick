@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout.html :: head">
+    <meta charset="UTF-8">
+    <title>Mediclick | Módulo de Insumos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<header th:replace="layout.html :: header"></header>
+
+<!--Actual table-->
+<div class="py-4 ml-5 mr-5">
+    <div class="card bg-light">
+        <div class="card-header" style="font-weight: bold; font-size: 20px" th:text="${title}"></div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{/insumosform}" class="btn btn-primary"
+                   style="background-color:  #38C6EE; border-color: #38C6EE">Agregar Insumo</a>
+                <a sec:authorize="hasAnyRole('ADMIN','INVENTARIO')" th:href="@{/insumos_excelexportar}" class="btn btn-outline-secondary">Exportar
+                    a Excel</a>
+            </h4>
+
+            <div class="form-row"
+                 style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-bottom: 15px">
+                <label for="myInput" style="margin-right: 10px">Filtrar registros de la tabla:</label>
+                <input id="myInput" class="form-control" style="width: 150px" type="text" placeholder="">
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id Insumos</th>
+                    <th>Fecha Entrada</th>
+                    <th>Registro</th>
+                    <th>Codigo Insumo</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th sec:authorize="hasAnyRole('ADMIN','INVENTARIO')"></th>
+                    <th sec:authorize="hasAnyRole('ADMIN','INVENTARIO')"></th>
+
+                </tr>
+                </thead>
+                <tbody id="myTable2">
+                <tr th:each="insumos : ${insumos}">
+                    <td th:text="${insumos.idinsumos}"></td>
+                    <td th:text="${insumos.fecha_entrada}"></td>
+                    <td th:text="${insumos.registro}"></td>
+                    <td th:text="${insumos.codigo_insumo}"></td>
+                    <td th:text="${insumos.nombre}"></td>
+                    <td th:text="${insumos.cantidad}"></td>
+                    <td sec:authorize="hasAnyRole('ADMIN','INVENTARIO')"><a class="btn btn-warning btn-sm"
+                                                            style="background-color:  #057A55; border-color:  #057A55; color: white"
+                                                            th:href="@{/insumosform/} + ${insumos.idinsumos}">Editar</a>
+                    </td>
+                    <td sec:authorize="hasAnyRole('ADMIN','INVENTARIO')"><a class="btn btn-danger btn-sm"
+                                                            th:href="@{/borrarinsumos/} + ${insumos.idinsumos}"
+                                                            onclick="return confirm('¿Estás seguro de eliminar este registro?');">Eliminar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <nav th:replace="paginator-nav.html :: paginator"></nav>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout.html :: footer"></footer>
+
+</body>
+</html>

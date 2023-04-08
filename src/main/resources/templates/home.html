@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout.html :: head">
+    <meta charset="UTF-8">
+    <title>Mediclick | Página de Inicio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<header th:replace="layout.html :: header"></header>
+<!--index page header-->
+<!--<header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #38C6EE">
+        <img width="70px" height="50px" th:src="@{/img/logo.png}">
+        <a class="navbar-brand" style="font-weight: bold; color: white">Mediclick</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <a class="nav-link" style="color: white" href="docs.html">Documentación</a>
+            <ul class="navbar-nav" id="navbaruser">
+                <li class="nav-item"><a class="nav-link" style="color: white">Bienvenido,
+                    [[${#httpServletRequest.remoteUser}]]</a></li>
+                <form class="d-flex" th:action="@{/logout}" method="post">
+                    <input class="btn btn-light" type="submit" value="Salir"/>
+                </form>
+            </ul>
+        </div>
+    </nav>
+</header>-->
+
+<section style="margin-top: 10px">
+    <!--<div class="container" style="margin-bottom: 90px;margin-top: -90px;">
+        <h2 style="text-align: center">Panel de Inicio</h2>
+        <p style="text-align: center">Selecciona el módulo al que quieres acceder.</p>
+    </div>-->
+    <div class="">
+        <!--Module one link-->
+        <!--<div class="row">-->
+        <div class="container-fluid" sec:authorize="hasAnyRole('ADMIN','CITA')">
+            <!--<div class="card" style="width: 500px; background-color: #f8f9fa">
+                <div class="card-body" with>
+                    <h4 class="card-title">Módulo de Citas</h4>
+                    <p class="card-text">Permite realizar la gestión de las citas agendadas por los pacientes.</p>
+                    <a th:href="@{/citas}" class="btn btn-light"
+                       style="background-color: #38C6EE; border-color: #38C6EE; color: white">Ir a Módulo</a>
+                </div>-->
+            <!--<div class="col">-->
+            <img th:src="@{/img/slide3.jpg}" width="100%" sec:authorize="hasAnyRole('ADMIN')">
+            <img th:src="@{/img/slide1.jpg}" width="100%" sec:authorize="hasAnyRole('CITA')">
+        </div>
+        <!--Module two link-->
+        <div class="container-fluid" sec:authorize="hasAnyRole('ADMIN','INVENTARIO')">
+            <!--<div class="card" style="width: 500px; background-color: #f8f9fa">
+                <div class="card-body" with>
+                    <h4 class="card-title">Módulo de Citas</h4>
+                    <p class="card-text">Permite realizar la gestión de los insumos.</p>
+                    <a th:href="@{/citas}" class="btn btn-light"
+                       style="background-color: #38C6EE; border-color: #38C6EE; color: white">Ir a Módulo</a>
+                </div>-->
+            <!--<div class="col">-->
+            <img th:src="@{/img/slide7.jpg}" width="100%" sec:authorize="hasAnyRole('INVENTARIO')">
+        </div>
+        <div class="container-fluid" sec:authorize="hasAnyRole('ADMIN','HISTORIAL')">
+            <!--<div class="card" style="width: 500px; background-color: #f8f9fa">
+                <div class="card-body">
+                    <h4 class="card-title">Módulo de Historiales</h4>
+                    <p class="card-text">Permite gestionar los historiales médicos de los pacientes.</p>
+                    <a th:href="@{/historiales}" class="btn btn-light"
+                       style="background-color: #38C6EE; border-color: #38C6EE; color: white">Ir a Módulo</a>
+                </div>-->
+            <img th:src="@{/img/slide9.jpg}" width="100%" sec:authorize="hasAnyRole('HISTORIAL')">
+        </div>
+        <!--</div>-->
+    </div>
+</section>
+
+<footer th:replace="layout.html :: footer"></footer>
+
+</body>
+</html>

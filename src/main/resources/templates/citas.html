@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout.html :: head">
+    <meta charset="UTF-8">
+    <title>Mediclick | Módulo de Citas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<header th:replace="layout.html :: header"></header>
+
+<div class="py-4 ml-5 mr-5">
+    <div class="card bg-light">
+        <div class="card-header" style="font-weight: bold; font-size: 20px" th:text="${title}"></div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{/citasform}" class="btn btn-primary" style="background-color: #38C6EE; border-color: #38C6EE">Agregar Cita</a>
+                <a sec:authorize="hasAnyRole('ADMIN','CITA')" th:href="@{/citas_excelexportar}" class="btn btn-outline-secondary">Exportar a Excel</a>
+            </h4>
+
+            <!--filter for the table-->
+            <div class="form-row" style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-bottom: 15px">
+                <label for="myInput" style="margin-right: 10px">Filtrar registros de la tabla:</label>
+                <input id="myInput" class="form-control" style="width: 150px"  type="text" placeholder="">
+            </div>
+
+            <!--Actual table-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id Cita</th>
+                    <th>Fecha</th>
+                    <th>Nombre Paciente</th>
+                    <th>Apellido Paciente</th>
+                    <th>Hora</th>
+                    <th>Médico</th>
+                    <th sec:authorize="hasAnyRole('ADMIN','CITA')"></th>
+                    <th sec:authorize="hasAnyRole('ADMIN','CITA')"></th>
+
+                </tr>
+                </thead>
+                <tbody id="myTable">
+                <tr th:each="citas : ${citas}">
+                    <td th:text="${citas.idcitas}"></td>
+                    <td th:text="${citas.fecha}"></td>
+                    <td th:text="${citas.nombre_paciente}"></td>
+                    <td th:text="${citas.apellido_paciente}"></td>
+                    <td th:text="${citas.hora}"></td>
+                    <td th:text="${citas.medico}"></td>
+                    <td sec:authorize="hasAnyRole('ADMIN','CITA')"><a class="btn btn-warning btn-sm" style="background-color:  #057A55; border-color:  #057A55; color: white" th:href="@{/citasform/} + ${citas.idcitas}">Editar</a></td>
+                    <td sec:authorize="hasAnyRole('ADMIN','CITA')"><a class="btn btn-danger btn-sm" th:href="@{/borrarcitas/} + ${citas.idcitas}" onclick="return confirm('¿Estás seguro de eliminar este registro?');">Eliminar</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <nav th:replace="paginator-nav.html :: paginator"></nav>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout.html :: footer"></footer>
+
+</body>
+</html>
