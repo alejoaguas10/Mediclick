@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     protected UserDetailsService userDetailsService() {
         UserDetails user1 = User
-                .withUsername("Administrador")
+                .withUsername("administrador")
                 .password("{noop}123")
                 .roles("ADMIN")
                 .build();
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Access authorization
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().defaultSuccessUrl("/home_principal.html", true);
+        http.formLogin().defaultSuccessUrl("/home.html", true);
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/home.html").permitAll()

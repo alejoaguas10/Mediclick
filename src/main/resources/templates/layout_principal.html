@@ -20,16 +20,15 @@
         <div class="col">
             <nav class="navbar navbar-expand-lg navbar" style="background-color: white">
                 <div>
-                    <a th:href="@{/home.html}">
+                    <a th:href="@{/home_principal.html}">
                         <img th:src="@{/img/Logo.jpeg}" width="130" height="70">
                     </a>
                 </div>
                 <ul class="navbar-nav" id="navbaruser">
-                    <li class="nav-item"><a class="nav-link" style="color: black">Bienvenido,
-                        [[${#httpServletRequest.remoteUser}]]</a></li>
-                    <form class="d-flex" th:action="@{/logout}" method="post">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/login}" style="color: black"><img th:src="@{/img/user.png}" width="32" height="32" class="rounded-circle">  Iniciar Sesión</a></li>
+                    <!--<form class="d-flex" th:action="@{/logout}" method="post">
                         <input class="btn" style="background-color: #38C6EE; color: white" type="submit" value="Salir"/>
-                    </form>
+                    </form>-->
                 </ul>
             </nav>
         </div>
@@ -45,9 +44,9 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" style="color: black" th:href="@{/home.html}">Inicio</a>
+                            <a class="nav-link active" style="color: black" th:href="@{/home_principal.html}">Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" style="color: white" th:href="@{/citas}"
                                sec:authorize="hasAnyRole('ADMIN','CITA')">Módulo
                                 de Citas</a>
@@ -59,7 +58,7 @@
                         <li class="nav-item">
                             <a class="nav-link" style="color: white" th:href="@{/historiales}"
                                sec:authorize="hasAnyRole('ADMIN','HISTORIAL')">Módulo de Historiales</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link" style="color: white" th:href="@{/docs.html}">Documentación</a>
                         </li>
@@ -118,7 +117,7 @@
          style="background-color: #38C6EE">
         <!--<footer class="d-flex flex-wrap justify-content-between align-items-center py-2 my-2">-->
         <div class="col-md-4 d-flex" style="color: white; align-content: center">
-            <span><a class="nav-link" style="color: white" th:href="@{/home.html}">MediCLICK S.A.S</a></span>
+            <span><a class="nav-link" style="color: white" th:href="@{/home_principal.html}">MediCLICK S.A.S</a></span>
         </div>
         <div class="col-md-4 d-flex" style="color: white">
                 <span align="center">

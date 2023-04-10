@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<header th:replace="layout.html :: header"></header>
-<a style="text-decoration:none" href="" class="btn-flotante"><img src="../images/flecha.png" width="17" height="17"></a>
-<section id="sc-2" class="" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<header th:replace="layout_principal.html :: header"></header>
+<section id="sc-2" style="margin-top: 10px">
     <div class="a row">
         <div class="col">
             <div class="container-fluid">
@@ -21,7 +20,7 @@
         </hr>
     </div>
 </section>
-<section id="sc-3" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<section id="sc-3">
     <div class="container text-justify p-3">
         <p>
             La empresa Movilmedica Atencion Integral Domiciliaria S.A.S tiene como domicilio principal de su actividad
@@ -32,7 +31,7 @@
         <hr>
     </div>
 </section>
-<section id="sc-4" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<section id="sc-4" >
     <div class="row-container" th:align="center">
         <div>
             <h4>Servicios Destacados</h4>
@@ -95,7 +94,7 @@
     </div>
     </div>
 </section>
-<section id="sc-5" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<section id="sc-5" >
     <div class="container">
         <div class="row">
             <div class="col">
@@ -127,7 +126,7 @@
         <hr>
     </div>
 </section>
-<section id="sc-6" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<section id="sc-6" >
     <div class="container">
         <div>
             <h4 style="text-align: center">
@@ -149,7 +148,7 @@
     <br>
     <br>
 </section>
-<section id="sc-7" sec:authorize="hasAnyRole('ADMIN','CITA','HISTORIAL','INVENTARIO')">
+<section id="sc-7" >
     <div class="container">
         <div class="row" th:align="center">
             <div class="col-4">
