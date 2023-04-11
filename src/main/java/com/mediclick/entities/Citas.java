@@ -15,12 +15,13 @@ public class Citas {
     private Integer idcitas;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     @Column(name = "nombre_paciente")
     private String nombre_paciente;
     @Column(name = "apellido_paciente")
     private String apellido_paciente;
+
     @Column(name = "hora")
     private Time hora;
     @Column(name = "medico")
