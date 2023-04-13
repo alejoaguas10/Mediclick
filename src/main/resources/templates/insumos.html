@@ -56,7 +56,7 @@
                                                             th:href="@{/insumosform/} + ${insumos.idinsumos}">Editar</a>
                     </td>
                     <td sec:authorize="hasAnyRole('ADMIN','INVENTARIO')"><a class="btn btn-danger btn-sm"
-                                                            th:href="@{/borrarinsumos/} + ${insumos.idinsumos}"
+                                                            th:href="@{/eliminarinsumos/} + ${insumos.idinsumos}"
                                                             onclick="return confirm('¿Estás seguro de eliminar este registro?');">Eliminar</a>
                     </td>
                 </tr>
